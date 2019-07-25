@@ -1,5 +1,3 @@
-# Solar-Data-Logger
-DIY solar data logger for small scale setups (Max 50A 25V)
 Parts:
 1pc Current sensor (SEN0098)
 1pc Voltage divider (ST0430X5)
