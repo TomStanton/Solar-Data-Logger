@@ -1,8 +1,5 @@
 #include <Time.h>
 #include <TimeLib.h>
-#include <SimpleKalmanFilter.h>
-
-SimpleKalmanFilter Filter1(100, 50, 10);
 
 ////////// Inputs //////////
 int VoltPin = 15;
