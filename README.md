@@ -10,6 +10,7 @@ Parts:
 *Follow wiring diagram. Do not use a single voltage regulator 
 as this will result in the current sensor failing.
 
+Download Teensyduino to program teensy board: https://www.pjrc.com/teensy/td_download.html
 
 Code info
 -Set time and date for time of turning on logger (not compile time)
