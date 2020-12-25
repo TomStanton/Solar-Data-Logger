@@ -1,3 +1,9 @@
+/*==========SETTINGS==========*/
+#define VOLT_OFFSET     2
+#define VOLT_MULTIPLIER 0.0161
+#define AMP_OFFSET      761
+#define AMP_MULTIPLIER  0.001
+
 /*=============LIBRARIES=============*/
 #include <TimeLib.h>
 #include "buildTime.h"//parses PCs time
@@ -59,11 +65,11 @@ void loop() {
   currentSecond = second();
   currentTime = millis();
 
-  /*==================MEASUREMENTS=================*/
-  volts = (float)(analogRead(VOLT_PIN) - 2) * 0.0161; // (Raw volt value - offset) * multiplier
-  //volts = (float)analogRead(VOLT_PIN);     // Read raw volt value
-  amps = (float)(analogRead(AMP_PIN) - 761) * 0.082; // (Raw amp value - offset) * multiplier
-  //amps = (float)analogRead(VOLT_PIN);      // Read raw amp value
+  /*============================MEASUREMENTS===========================*/
+  volts = (float)(analogRead(VOLT_PIN) - VOLT_OFFSET) * VOLT_MULTIPLIER; // (Raw volt value - offset) * multiplier
+  //volts = (float)analogRead(VOLT_PIN); // Read raw volt value
+  amps = (float)(analogRead(AMP_PIN) - AMP_OFFSET) * AMP_MULTIPLIER;     // (Raw amp value - offset) * multiplier
+  //amps = (float)analogRead(VOLT_PIN);  // Read raw amp value
   watts = (float)volts * amps;
 
   if (amps < 0) {
