@@ -122,7 +122,7 @@ void loop() {
 
     // Second line
     lcd.setCursor(3, 1);
-    lcd.print(F("Energy"));
+    lcd.print(F("Energy "));
     lcd.setCursor(11, 1);
     lcd.print(wattHours);
     lcd.setCursor(14, 1);
