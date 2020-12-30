@@ -1,4 +1,5 @@
 /*==========SETTINGS==========*/
+//read README.md to calibrate properly
 #define VOLT_OFFSET     2
 #define VOLT_MULTIPLIER 0.0161
 #define AMP_OFFSET      761
@@ -13,7 +14,6 @@
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 #include <SD.h>
-const int chipSelect = BUILTIN_SDCARD;
 
 /*======PINS======*/
 #define VOLT_PIN 15
@@ -56,7 +56,7 @@ void setup() {
   lcd.clear();
   
   /*========SD========*/
-  SD.begin(chipSelect);
+  SD.begin(BUILTIN_SDCARD);
 
   /*=============================TIME & DATE SET=============================*/
   setTime(BUILD_HOUR, BUILD_MIN, BUILD_SEC, BUILD_DAY, BUILD_MONTH, BUILD_YEAR);
@@ -207,6 +207,4 @@ void loop() {
     prevMinute = minute();
     prevHour = hour();
   }
-
-  delay(20);
 }
