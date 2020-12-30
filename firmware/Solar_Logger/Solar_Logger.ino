@@ -54,6 +54,9 @@ void setup() {
 
   delay(2000);
   lcd.clear();
+  
+  /*========SD========*/
+  SD.begin(chipSelect);
 
   /*=============================TIME & DATE SET=============================*/
   setTime(BUILD_HOUR, BUILD_MIN, BUILD_SEC, BUILD_DAY, BUILD_MONTH, BUILD_YEAR);
@@ -67,9 +70,9 @@ void loop() {
 
   /*============================MEASUREMENTS===========================*/
   volts = (float)(analogRead(VOLT_PIN) - VOLT_OFFSET) * VOLT_MULTIPLIER; // (Raw volt value - offset) * multiplier
-  //volts = (float)analogRead(VOLT_PIN); // Read raw volt value
+  //volts = analogRead(VOLT_PIN); // Read raw volt value
   amps = (float)(analogRead(AMP_PIN) - AMP_OFFSET) * AMP_MULTIPLIER;     // (Raw amp value - offset) * multiplier
-  //amps = (float)analogRead(VOLT_PIN);  // Read raw amp value
+  //amps = analogRead(VOLT_PIN);  // Read raw amp value
   watts = (float)volts * amps;
 
   if (amps < 0) {
@@ -87,7 +90,7 @@ void loop() {
 
   prevTime = currentTime;
 
-  if (currentTime > 4294967000) {
+  if (currentTime >= 4294967000) {
     prevTime = 0;
   }
 
@@ -179,8 +182,6 @@ void loop() {
 
     wattsAvg = totalWattHours - prevWattHours;
     prevWattHours = totalWattHours;
-
-    SD.begin(chipSelect);
 
     String dataString = "";
     dataString += String(hour());
