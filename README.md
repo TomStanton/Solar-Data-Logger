@@ -19,7 +19,7 @@ Code info
 -SD card can be removed to load data to PC at anytime. However, if the hour value
  changes, a log will be missed. So it's best to remove the SD card a few minutes into
  an hour and return within the hour.
--The data log text layout is (Hour:Minute, Day/Month, Volts, Watts, TotalWattHours).
+-The data log text layout is (Hour:Minute; Day/Month/Year; Volts, Watts, totalWattHours).
 
 Calibrate Voltage Sensor
 - Read the raw volt value with no current draw, this is the offset value.
